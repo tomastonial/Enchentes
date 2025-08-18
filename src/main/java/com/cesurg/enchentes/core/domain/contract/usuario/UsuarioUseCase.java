@@ -10,4 +10,6 @@ public interface UsuarioUseCase {
     public void delete(int id);
     public Usuario findById(int id);
     public List<Usuario> findAll();
+    public Usuario findByUsername(String username);
+    public Usuario findByEmail(String email);
 }

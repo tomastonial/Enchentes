@@ -12,7 +12,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioUseCase usuarioUseCase;
 
-    @PostMapping("/usuario")
+    @PostMapping("/usuario/cadastro")
     public void create(@RequestBody Usuario usuario) {
         usuarioUseCase.create(usuario);
     }
@@ -35,5 +35,15 @@ public class UsuarioController {
     @GetMapping("/usuario")
     public List<Usuario> findAll() {
         return usuarioUseCase.findAll();
+    }
+
+    @GetMapping("/usuario/email/{email}")
+    public Usuario findByEmail(@PathVariable String email){
+        return usuarioUseCase.findByEmail(email);
+    }
+
+    @GetMapping("/usuario/username/{username}")
+    public Usuario findByUsername(@PathVariable String username) {
+        return usuarioUseCase.findByUsername(username);
     }
 }

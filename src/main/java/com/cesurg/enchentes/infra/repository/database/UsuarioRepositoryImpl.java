@@ -70,4 +70,30 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return entityManager.createNativeQuery(query, Usuario.class)
                 .getResultList();
     }
+
+    @Override
+    public Usuario findByUsername(String username) {
+        var query = "SELECT * FROM usuario WHERE nome = :username";
+        try {
+            return (Usuario) entityManager.createNativeQuery(query, Usuario.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println("User not found: " + e.getMessage());
+            return null; // or handle the exception as needed
+        }
+    }
+
+    @Override
+    public Usuario findByEmail(String email) {
+        var query = "SELECT * FROM usuario WHERE email = :email";
+        try {
+            return (Usuario) entityManager.createNativeQuery(query, Usuario.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println("User not found: " + e.getMessage());
+            return null; // or handle the exception as needed
+        }
+    }
 }
