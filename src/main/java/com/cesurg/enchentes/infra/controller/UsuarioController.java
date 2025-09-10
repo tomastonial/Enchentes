@@ -23,7 +23,7 @@ public class UsuarioController {
         usuarioUseCase.update(id, usuario);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/usuario/delete/{id}")
     public void delete(@PathVariable int id) {
         usuarioUseCase.delete(id);
     }

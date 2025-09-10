@@ -34,8 +34,7 @@ public class AuthService {
 
             String token = jwtUtils.generateTokenFromUserDetailsImpl(userAuthenticate);
 
-            AcessDto acessDto = new AcessDto(token, userAuthenticate.getUsername());
-
+            AcessDto acessDto = new AcessDto(token, userAuthenticate.getUsername(), userAuthenticate.getRole().name());
             return acessDto;
 
         } catch (BadCredentialsException e) {
