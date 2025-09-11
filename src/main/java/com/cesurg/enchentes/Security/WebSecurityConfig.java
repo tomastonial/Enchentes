@@ -51,8 +51,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/usuario/**").hasRole("ADMIN")
                         .requestMatchers("/produto").hasAnyRole("USER", "ENGENHARIA", "ADMIN")
                         .requestMatchers("/produto/cadastro").hasRole("ENGENHARIA")
-                        .requestMatchers("/produto/{id}").hasRole("ENGENHARIA")
-                        .requestMatchers("/produto/delete/{id}").hasRole("ENGENHARIA")
+                        .requestMatchers("/produto/**").hasRole("ENGENHARIA")
+                        .requestMatchers("/produto/delete/**").hasRole("ENGENHARIA")
                         .anyRequest().authenticated());
 
         http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
